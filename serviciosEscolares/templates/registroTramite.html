@@ -1,0 +1,18 @@
+{%  extends 'template.html' %}
+
+{% block title %} Tramites {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+
+<div class="form-group">
+ {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</div>
+</form>
+
+{% endblock %}
+
+

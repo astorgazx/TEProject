@@ -22,6 +22,19 @@ def register(request):
             return HttpResponse("Error al registrar alumno")
     return render(request, 'register.html', {'form': AlumnoForm()})
 
+@csrf_protect
+
+def registerTramite(request):
+    if request.method == 'POST':
+        form = TramiteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Tramite registrado correctamente")
+        else:
+            return HttpResponse("Error al registrar tramite")
+    return render(request, 'registroTramite.html', {'form': TramiteForm()})
+
+
 
 
 
