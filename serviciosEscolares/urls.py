@@ -8,4 +8,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('register', views.register, name='register'),
     path('registerTramite', views.registerTramite, name='registerTramite'),
+    path('showTramites', views.showTramites, name='showTramites'),
+    path('editTramite/<int:id>', views.editTramite, name='editTramite'),
 ]

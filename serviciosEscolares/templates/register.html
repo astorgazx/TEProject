@@ -11,14 +11,16 @@ Registro
 
 
 {%block content %}
-
-<form action="" method="post">
+<!-- center the form  -->
+<form action="" method="post" class="form-horizontal" role="form" style="margin-left: 30%; margin-right: 30%; margin-top: 5%; margin-bottom: 5%;">
     {% csrf_token %}
-    {{ form }}
     
-    {% for field in form %} 
+    {% for field in form %}
+    <div class="mb-3 ">
+        {{ field.label_tag }} {{ field }} 
         {{ field.errors }}
         {{ field.help_text }}
+    </div>
     {% endfor %}
     <input type="submit" value="Submit">
 </form>

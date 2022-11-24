@@ -4,13 +4,17 @@
 
 {% block content %}
 
-<form action="" method="post">
-
-<div class="form-group">
- {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</div>
+<form action="" method="post" class="form-horizontal" role="form" style="margin-left: 30%; margin-right: 30%; margin-top: 5%; margin-bottom: 5%;">
+    {% csrf_token %}
+    
+    {% for field in form %}
+    <div class="mb-3 ">
+        {{ field.label_tag }} {{ field }} 
+        {{ field.errors }}
+        {{ field.help_text }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Submit">
 </form>
 
 {% endblock %}

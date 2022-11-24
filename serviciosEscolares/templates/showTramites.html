@@ -1,0 +1,45 @@
+{% extends 'template.html' %}
+
+{% block title %} Tramites {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Tramites</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tramite in tramites %}
+                            <tr>
+                                <td>{{ tramite.nombre }}</td>
+                                <td>{{ tramite.descripcion }}</td>
+                                <td>{{ tramite.fecha }}</td>
+                                <td>{{ tramite.estado }}</td>
+                                <td>
+                                    <a href="{{ url_for('editTramite', id=tramite.claveTramite) }}" class="btn btn-info">Editar</a>
+    
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            $('#tramites').DataTable();
+        });
+    </script>
+{% endblock %}

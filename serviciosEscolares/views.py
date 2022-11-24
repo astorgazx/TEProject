@@ -35,6 +35,23 @@ def registerTramite(request):
     return render(request, 'registroTramite.html', {'form': TramiteForm()})
 
 
+def showTramites(request):
+    if request.method == 'GET':
+        tramites = Tramites.objects.all()
+        return render(request, 'showTramites.html', {'tramites': tramites})
+    
+def editTramite(request, id):
+    if request.method == 'GET':
+        tramite = Tramites.objects.get(id=id)
+        return render(request, 'editTramite.html', {'tramite': tramite})
+    if request.method == 'POST':
+        tramite = Tramites.objects.get(id=id)
+        form = TramiteForm(request.POST, instance=tramite)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Tramite actualizado correctamente")
+        else:
+            return HttpResponse("Error al actualizar tramite")
 
 
 

@@ -12,3 +12,4 @@ class TramiteForm(forms.ModelForm):
     class Meta:
         model = Tramites
         fields = '__all__'
+        
