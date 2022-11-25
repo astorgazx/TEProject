@@ -25,7 +25,8 @@
                                 <td>{{ tramite.fecha }}</td>
                                 <td>{{ tramite.estado }}</td>
                                 <td>
-                                    <a href="{{ url_for('editTramite', id=tramite.claveTramite) }}" class="btn btn-info">Editar</a>
+                                    <a href={% url 'editTramite' id=tramite.claveTramite %} class="btn btn-primary">Editar</a>
+                                    <a href={% url 'delTramite' id=tramite.claveTramite %} class="btn btn-danger">Eliminar</a>
     
                             </tr>
                         {% endfor %}

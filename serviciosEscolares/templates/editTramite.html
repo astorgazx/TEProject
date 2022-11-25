@@ -3,7 +3,8 @@
 
 {% block content %}
 
-<form method="post" action="{{ url_for('editTramite', id=tramite.id) }}">
+<form method="post" action={% url 'editTramite' tramite.claveTramite %}>
+    {% csrf_token %}
     <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" value="{{ tramite.nombre }}">

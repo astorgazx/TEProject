@@ -10,4 +10,5 @@ urlpatterns = [
     path('registerTramite', views.registerTramite, name='registerTramite'),
     path('showTramites', views.showTramites, name='showTramites'),
     path('editTramite/<int:id>', views.editTramite, name='editTramite'),
+    path('delTramite/<int:id>', views.delTramite, name='delTramite'),
 ]

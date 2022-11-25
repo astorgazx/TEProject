@@ -23,7 +23,6 @@ def register(request):
     return render(request, 'register.html', {'form': AlumnoForm()})
 
 @csrf_protect
-
 def registerTramite(request):
     if request.method == 'POST':
         form = TramiteForm(request.POST)
@@ -39,13 +38,14 @@ def showTramites(request):
     if request.method == 'GET':
         tramites = Tramites.objects.all()
         return render(request, 'showTramites.html', {'tramites': tramites})
-    
+
+@csrf_protect
 def editTramite(request, id):
     if request.method == 'GET':
-        tramite = Tramites.objects.get(id=id)
+        tramite = Tramites.objects.get(claveTramite=id)
         return render(request, 'editTramite.html', {'tramite': tramite})
     if request.method == 'POST':
-        tramite = Tramites.objects.get(id=id)
+        tramite = Tramites.objects.get(claveTramite=id)
         form = TramiteForm(request.POST, instance=tramite)
         if form.is_valid():
             form.save()
@@ -53,6 +53,12 @@ def editTramite(request, id):
         else:
             return HttpResponse("Error al actualizar tramite")
 
+@csrf_protect
+def delTramite(request, id):
+    if request.method == 'GET':
+        tramite = Tramites.objects.get(claveTramite=id)
+        tramite.delete()
+        return HttpResponse("Tramite eliminado correctamente")
 
 
 
