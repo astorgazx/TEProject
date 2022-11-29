@@ -13,3 +13,11 @@ class TramiteForm(forms.ModelForm):
         model = Tramites
         fields = '__all__'
         
+class UpdateTramiteForm(forms.ModelForm):
+    class Meta:
+        model = Tramites
+        fields = '__all__'
+        exclude = ['claveTramite']
+        
+        
+    

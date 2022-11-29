@@ -14,16 +14,17 @@
                             <th>Descripcion</th>
                             <th>Fecha</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
+                            <th>Observaciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for tramite in tramites %}
                             <tr>
-                                <td>{{ tramite.nombre }}</td>
-                                <td>{{ tramite.descripcion }}</td>
+                                <td>{{ tramite.nombreTramite }}</td>
+                                <td>{{ tramite.descripcionTramite }}</td>
                                 <td>{{ tramite.fecha }}</td>
-                                <td>{{ tramite.estado }}</td>
+                                <td>{{ tramite.estadoTramite }}</td>
+                                <td>{{ tramite.observaciones }}</td>
                                 <td>
                                     <a href={% url 'editTramite' id=tramite.claveTramite %} class="btn btn-primary">Editar</a>
                                     <a href={% url 'delTramite' id=tramite.claveTramite %} class="btn btn-danger">Eliminar</a>

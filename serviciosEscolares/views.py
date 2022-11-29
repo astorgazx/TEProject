@@ -43,15 +43,17 @@ def showTramites(request):
 def editTramite(request, id):
     if request.method == 'GET':
         tramite = Tramites.objects.get(claveTramite=id)
-        return render(request, 'editTramite.html', {'tramite': tramite})
+        
     if request.method == 'POST':
         tramite = Tramites.objects.get(claveTramite=id)
-        form = TramiteForm(request.POST, instance=tramite)
+        form = UpdateTramiteForm(request.POST, instance=tramite)
+        
         if form.is_valid():
             form.save()
             return HttpResponse("Tramite actualizado correctamente")
         else:
             return HttpResponse("Error al actualizar tramite")
+    return render(request, 'editTramite.html', {'form': UpdateTramiteForm(instance=tramite)})
 
 @csrf_protect
 def delTramite(request, id):
